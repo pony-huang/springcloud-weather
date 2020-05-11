@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>mirco-weather-basic</module>
+        <module>mirco-weather-redis</module>
+        <module>mirco-weather-quartz</module>
+        <module>mirco-weather-report</module>
+        <module>msa-weather-collection-server</module>
+        <module>msa-weather-data-server</module>
+        <module>msa-weather-report-server</module>
+        <module>msa-weather-city-server</module>
+        <module>mirco-weather-eureka-server</module>
+        <module>mirco-weather-eureka-client</module>
+        <module>msa-weather-collection-eureka</module>
+        <module>msa-weather-data-eureka</module>
+        <module>msa-weather-city-eureka</module>
+        <module>msa-weather-report-eureka</module>
+        <module>mirco-weather-eureka-client-feign</module>
+        <module>msa-weather-collection-eureka-feign</module>
+        <module>msa-weather-report-eureka-feign</module>
+        <module>mirco-weather-eureka-client-zuul</module>
+        <module>msa-weather-eureka-client-zuul</module>
+        <module>msa-weather-report-eureka-feign-gateway</module>
+        <module>mirco-weather-config-server</module>
+        <module>mirco-weather-config-client</module>
+        <module>mirco-weather-eureka-client-feign-hystrix</module>
+        <module>msa-weather-report-eureka-feign-gateway-hystrix</module>
+    </modules>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.7.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.hpg.springcloud</groupId>
+    <artifactId>weather</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>springcloud-weather</name>
+    <description>Demo project for Spring Boot</description>
+
+
+    <!--统一管理jar包版本-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <junit.version>4.12</junit.version>
+        <log4j.version>1.2.17</log4j.version>
+        <lombok.version>1.16.18</lombok.version>
+        <mysql.version>8.0.11</mysql.version>
+    </properties>
+
+
+    <!--子模块继承之后，提供作用：锁定版本+子module不用groupId和version-->
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+
+            <!--spring cloud Hoxton.SR1-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR1</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-devtools</artifactId>
+                <version>2.2.7.RELEASE</version>
+                <scope>runtime</scope>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>2.2.7.RELEASE</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.junit.vintage</groupId>
+                        <artifactId>junit-vintage-engine</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

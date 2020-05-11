@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: mirco-weather-config-client
+  cloud:
+    config:
+      profile: dev
+      uri: http://localhost:8787/
+      label: master
+      name: mirco-weather-config-client
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8081
